@@ -4,6 +4,7 @@
 *.war
 *.ear
 *.nar
+*.iml
 hs_err_pid*
 .settings/
 bin/
@@ -18,3 +19,7 @@ tmp/
 local.properties
 .loadpath
 .factorypath
+pom.xml
+doc/
+.idea/
+target/
