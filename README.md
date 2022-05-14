@@ -1,61 +1,100 @@
+# Frame
 
-
-# CuboidUtils
-
-:question: | This class allows you to manipulate cuboids, it also contains useful methods to get the players, blocks... in the cuboid.
+:question: | This API allows you to easily manipulate cuboids, it also contains useful methods to get the players, blocks... in the cuboid.
 
 :warning: | You need the Bukkit or Spigot API in your build path.
 
+<br/>
 
-# Usage
+# Prerequisites
 
-**Create a new Cuboid**
-
-```Java
-World world = Bukkit.getWorld("world"); // Get an instance of your world
-Location corner1 = new Location(world, x1, y1, z1); // Location of the first corner
-Location corner2 = new Location(world, x2, y2, z2); // Location of the second corner
-Cuboid cuboid = new Cuboid(corner1, corner2); // Create a new instance of Cuboid with your two corners
- ```
+Simply download the [latest release](https://github.com/Hytashi/Frame/releases/download/2.0.0/Frame.jar) and add the jar to your *plugins* folder, then restart your server to load the plugin.<br/>
+Add the downloaded jar file to your project's build path and you're good to go! 
 
 <br/>
 
-**Check if a player is in Cuboid**
+# Creating cuboids
 
-```Java
-Player player = Bukkit.getPlayer("Hytashi"); // Get an intance of your player
-boolean playerIsInCuboid = cuboid.containsPlayer(player); // Returns true if the player is in the Cuboid
- ```
+**Cube3DCuboid**
+
+> *Create a new instance*
+>
+> ```Java
+> World world = Bukkit.getWorld("world"); // Get an instance of your world
+> Location corner1 = new Location(world, x1, y1, z1); // Location of the first corner
+> Location corner2 = new Location(world, x2, y2, z2); // Location of the second corner
+> Cube3DCuboid cube3DCuboid = new Cube3DCuboid(corner1, corner2); // Create a new instance
+> ```
 
 <br/>
 
-**Get the number of blocks of a certain type in the Cuboid** 
-```Java
-int numberOfBlocks = cuboid.getNumberOfBlocks(Material.DIRT);
- ```
- 
+**Circle2DCuboid**
+
+> *Create a new instance*
+>
+> ```Java
+> World world = Bukkit.getWorld("world"); // Get an instance of your world
+> Location center = new Location(world, x1, y1, z1); // Location of the center
+> int radius = 2; // Circle radius
+> Circle2DCuboid circle2DCuboid = new Circle2DCuboid(corner1, radius); // Create a new instance
+> ```
+
 <br/>
 
-**Get the number of blocks of a certain type and subtype in the Cuboid** 
-```Java
-// One subtype
-int numberOfBlocks = cuboid.getNumberOfBlocks(Material.WOOL, (byte) 5);
+**Rhombus2DCuboid**
 
-// Multiple subtypes
-int numberOfBlocks = cuboid.getNumberOfBlocks(Material.WOOL, (byte) 5), (byte) 7);
- ```
+> *Create a new instance*
+>
+> ```Java
+> World world = Bukkit.getWorld("world"); // Get an instance of your world
+> Pair<Location, Location> side1 = org.apache.commons.lang3.tuple.Pair.of(A, B); // Pair that represents the first side
+> Pair<Location, Location> side2 = org.apache.commons.lang3.tuple.Pair.of(C, D); // Pair that represents the second side
+> Rhombus2DCuboid rhombus2DCuboid = new Rhombus2DCuboid(side1, side2); // Create a new instance
+> ```
+
+<img src="https://cdn.discordapp.com/attachments/845032407274487819/926064518994493440/unknown.png" alt="git" width="500" height="500"/>
+
+<br/>
+
+**CuboidGroup** <br/>
+*Cuboid groups allow you to group cuboids of different types together. A cuboid group behaves like any other cuboid and contains the same methods as other cuboids.*
+> *Create a new instance*
+>
+> ```Java
+> CuboidGroup cuboid = new CuboidGroup(cube3DCuboid, circle2DCuboid, rhombus2DCuboid); // Create a new instance (you can pass as many cuboids as you want in the constructor)
+> ```
+
+<br/>
+
+# Examples
+
+These methods work with all cuboid types
+
+> *Check if a player is in a cuboid*
+>
+> ```Java
+> Player player = Bukkit.getPlayer("Hytashi"); // Get an intance of your player
+> boolean playerIsInCuboid = cuboid.containsPlayer(player); // Returns true if the player is in the cuboid
+> ```
+
+> *Check if a block is in a cuboid*
+>
+> ```Java
+> Block block = Bukkit.getWorld("world").getBlockAt(1, 2, 3); // Get an intance of your block
+> boolean playerIsInCuboid = cuboid.containsPlayer(player); // Returns true if the block is in the cuboid
+> ```
+
+<br/>
 
 # JavaDoc
 
+These methods work with all cuboid types
+
 | Method | Arguments | Description | Return type |
 |--|--|--|--|
-| containsPlayer | Player player | Returns whether a player is in the cuboid | boolean |
-| getMinX | :x: | Gets the minimum X | double |
-| getMinY | :x: | Gets the minimum Y | double |
-| getMinZ | :x: | Gets the minimum Z | double |
-| getMaxX | :x: | Gets the maximum X | double |
-| getMaxY | :x: | Gets the maximum Y | double |
-| getMaxZ | :x: | Gets the maximum Z | double |
-| toString | :x: | Returns the cuboid as a String | String |
-| getNumberOfBlocks | Material blockType | Gets the number of blocks of a certain type in the cuboid | int |
-| getNumberOfBlocks | Material blockType, byte... data | Gets the number of blocks of a certain type and subtype in the cuboid | int |
+| containsPlayer | Player player | Returns whether the player is contained within the cuboid | boolean |
+| containsBlock | Block block | Returns whether the block is contained within the cuboid | boolean |
+| contains | Location location | Returns whether the location is contained within the cuboid | boolean |
+| contains | double x, double y, double z | Returns whether the coordinates are contained within the cuboid | boolean |
+| getWorld | :x: | Returns the World the cuboid is in | World |
+| toString | :x: | Returns a String representation of the cuboid | String |
