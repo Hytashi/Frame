@@ -47,12 +47,10 @@ Add the downloaded jar file to your project's build path and you're good to go!
 >
 > ```Java
 > World world = Bukkit.getWorld("world"); // Get an instance of your world
-> Pair<Location, Location> side1 = org.apache.commons.lang3.tuple.Pair.of(A, B); // Pair that represents the first side
-> Pair<Location, Location> side2 = org.apache.commons.lang3.tuple.Pair.of(C, D); // Pair that represents the second side
+> Pair<Location, Location> side1 = Pair.of(A, B); // Pair that represents the first side
+> Pair<Location, Location> side2 = Pair.of(C, D); // Pair that represents the second side
 > Rhombus2DCuboid rhombus2DCuboid = new Rhombus2DCuboid(side1, side2); // Create a new instance
 > ```
-
-<img src="https://cdn.discordapp.com/attachments/845032407274487819/926064518994493440/unknown.png" alt="git" width="500" height="500"/>
 
 <br/>
 
