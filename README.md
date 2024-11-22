@@ -102,7 +102,7 @@ These methods work with all cuboid types
 These methods work with all cuboid types
 
 | Method prototype | Description | Return type |
-|--|--|--|--|
+|--|--|--|
 | containsPlayer(Player player) | Returns whether the player is contained within the cuboid | boolean |
 | containsBlock(Block block) | Returns whether the block is contained within the cuboid | boolean |
 | contains(Location location) | Returns whether the location is contained within the cuboid | boolean |
