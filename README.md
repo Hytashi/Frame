@@ -8,7 +8,7 @@
 
 # Prerequisites
 
-Simply download the [latest release](https://github.com/Hytashi/Frame/releases/download/2.0.0/Frame.jar) and add the jar to your *plugins* folder, then restart your server to load the plugin.<br/>
+Simply download the [latest release](https://github.com/Hytashi/Frame/releases/download/2.1.0/Frame.jar) and add the jar to your *plugins* folder, then restart your server to load the plugin.<br/>
 Add the downloaded jar file to your project's build path and you're good to go! 
 
 <br/>
@@ -23,7 +23,20 @@ Add the downloaded jar file to your project's build path and you're good to go!
 > World world = Bukkit.getWorld("world"); // Get an instance of your world
 > Location corner1 = new Location(world, x1, y1, z1); // Location of the first corner
 > Location corner2 = new Location(world, x2, y2, z2); // Location of the second corner
-> Cube3DCuboid cube3DCuboid = new Cube3DCuboid(corner1, corner2); // Create a new instance
+> Cube3DCuboid cuboid = new Cube3DCuboid(corner1, corner2); // Create a new instance
+> ```
+
+<br/>
+
+**Square2DCuboid**
+
+> *Create a new instance*
+>
+> ```Java
+> World world = Bukkit.getWorld("world"); // Get an instance of your world
+> Coordinates2D corner1 = new Coordinates2D(30, 10);
+> Coordinates2D corner2 = new Coordinates2D(65, 200);
+> Square2DCuboid cuboid = new Square2DCuboid(world, corner1, radius); // Create a new instance
 > ```
 
 <br/>
@@ -36,7 +49,7 @@ Add the downloaded jar file to your project's build path and you're good to go!
 > World world = Bukkit.getWorld("world"); // Get an instance of your world
 > Location center = new Location(world, x1, y1, z1); // Location of the center
 > int radius = 2; // Circle radius
-> Circle2DCuboid circle2DCuboid = new Circle2DCuboid(corner1, radius); // Create a new instance
+> Circle2DCuboid cuboid = new Circle2DCuboid(corner1, radius); // Create a new instance
 > ```
 
 <br/>
@@ -47,9 +60,9 @@ Add the downloaded jar file to your project's build path and you're good to go!
 >
 > ```Java
 > World world = Bukkit.getWorld("world"); // Get an instance of your world
-> Pair<Location, Location> side1 = Pair.of(A, B); // Pair that represents the first side
-> Pair<Location, Location> side2 = Pair.of(C, D); // Pair that represents the second side
-> Rhombus2DCuboid rhombus2DCuboid = new Rhombus2DCuboid(side1, side2); // Create a new instance
+> Pair<Coordinates2D, Coordinates2D> side1 = Pair.of(new Coordinates2D(0, 0), new Coordinates2D(0, 5)); // Pair that represents the first side
+> Pair<Coordinates2D, Coordinates2D> side2 = Pair.of(new Coordinates2D(5, 10), new Coordinates2D(5, 5)); // Pair that represents the second side
+> Rhombus2DCuboid cuboid = new Rhombus2DCuboid(side1, side2); // Create a new instance
 > ```
 
 <br/>
@@ -59,7 +72,7 @@ Add the downloaded jar file to your project's build path and you're good to go!
 > *Create a new instance*
 >
 > ```Java
-> CuboidGroup cuboid = new CuboidGroup(cube3DCuboid, circle2DCuboid, rhombus2DCuboid); // Create a new instance (you can pass as many cuboids as you want in the constructor)
+> CuboidGroup cuboidGroup = new CuboidGroup(cube3DCuboid, circle2DCuboid, rhombus2DCuboid); // Create a new instance (you can pass as many cuboids as you want in the constructor)
 > ```
 
 <br/>
