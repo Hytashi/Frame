@@ -1,31 +1,16 @@
 package fr.hytashi.frame._2D;
 
-import be.seeseemelk.mockbukkit.MockBukkit;
-import be.seeseemelk.mockbukkit.ServerMock;
-import be.seeseemelk.mockbukkit.WorldMock;
-import fr.hytashi.frame.Frame;
+import fr.hytashi.frame.MockWorld;
 import fr.hytashi.frame.util.Pair;
 import org.bukkit.Location;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class Rhombus2DCuboidTest {
 
-    ServerMock serverMock;
-    Frame plugin;
-    WorldMock world;
-
-    @BeforeAll
-    public void load() {
-        serverMock = MockBukkit.mock();
-        plugin = MockBukkit.load(Frame.class);
-        world = serverMock.addSimpleWorld("world");
-    }
-
-    @AfterAll
-    public void unload() {
-        MockBukkit.unload();
-    }
+    private final MockWorld world = new MockWorld("world");
 
     @Test
     public void testOrientation() {
@@ -38,8 +23,6 @@ public class Rhombus2DCuboidTest {
 
     @Test
     public void testContains() {
-        WorldMock world = serverMock.addSimpleWorld("world");
-
         // X
         Rhombus2DCuboid cuboid1 = new Rhombus2DCuboid(world, Pair.of(new Coordinates2D(0, 0), new Coordinates2D(0, 5)),
                 Pair.of(new Coordinates2D(5, 10), new Coordinates2D(5, 5)));

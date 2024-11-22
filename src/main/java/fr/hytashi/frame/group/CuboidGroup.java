@@ -11,10 +11,6 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Hytashi
- * @version 1.1.0
- */
 @Getter
 @EqualsAndHashCode
 @ToString

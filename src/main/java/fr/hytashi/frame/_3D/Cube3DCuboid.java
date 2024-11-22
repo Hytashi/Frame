@@ -6,18 +6,12 @@ import lombok.Getter;
 import lombok.ToString;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.World;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * @author Hytashi
- * @version 1.1.0
- */
 @Getter
 @EqualsAndHashCode(callSuper = false)
 @ToString
@@ -25,25 +19,17 @@ public class Cube3DCuboid extends Cuboid {
 
     private final int minX, minY, minZ;
     private final int maxX, maxY, maxZ;
-    private final World world;
 
-    /**
-     * Constructor
-     *
-     * @param corner1 the first corner
-     * @param corner2 the second corner
-     */
     public Cube3DCuboid(Location corner1, Location corner2) {
+        super(corner1.getWorld());
         if (!corner1.getWorld().equals(corner2.getWorld()))
             throw new IllegalArgumentException("Corners must be in the same world");
-
         minX = Math.min(corner1.getBlockX(), corner2.getBlockX());
         minY = Math.min(corner1.getBlockY(), corner2.getBlockY());
         minZ = Math.min(corner1.getBlockZ(), corner2.getBlockZ());
         maxX = Math.max(corner1.getBlockX(), corner2.getBlockX());
         maxY = Math.max(corner1.getBlockY(), corner2.getBlockY());
         maxZ = Math.max(corner1.getBlockZ(), corner2.getBlockZ());
-        this.world = corner1.getWorld();
     }
 
     /**
@@ -55,7 +41,7 @@ public class Cube3DCuboid extends Cuboid {
 
     @Override
     public boolean contains(Location location) {
-        return world.equals(location.getWorld()) && location.getX() >= minX && location.getX() <= maxX
+        return getWorld().equals(location.getWorld()) && location.getX() >= minX && location.getX() <= maxX
                 && location.getY() >= minY && location.getY() <= maxY && location.getZ() >= minZ && location.getZ() <= maxZ;
     }
 
@@ -69,7 +55,7 @@ public class Cube3DCuboid extends Cuboid {
         for (int x = getMinX(); x <= getMaxX(); x++)
             for (int y = getMinY(); y <= getMaxY(); y++)
                 for (int z = getMinZ(); z <= getMaxZ(); z++)
-                    blocks.add(world.getBlockAt(x, y, z));
+                    blocks.add(getWorld().getBlockAt(x, y, z));
         return blocks;
     }
 
@@ -110,14 +96,6 @@ public class Cube3DCuboid extends Cuboid {
 
     public Location getUpperCorner() {
         return new Location(getWorld(), maxX, maxY, maxZ);
-    }
-
-    /**
-     * Clones the current Cube3DCuboid
-     */
-    @Override
-    public Cube3DCuboid clone() {
-        return new Cube3DCuboid(this);
     }
 
 }

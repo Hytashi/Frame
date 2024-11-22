@@ -23,3 +23,8 @@ pom.xml
 doc/
 .idea/
 target/
+/.gradle
+/build
+/gradle
+gradlew.bat
+gradlew

@@ -7,12 +7,15 @@ import org.bukkit.entity.Player;
 
 public abstract class Cuboid {
 
-    private World world;
+    private final World world;
+
+    protected Cuboid(World world) {
+        this.world = world;
+    }
 
     /**
      * Checks if a location is inside the cuboid
      *
-     * @param location the location
      * @return true if the location is inside the cuboid
      */
     public abstract boolean contains(Location location);
@@ -20,7 +23,6 @@ public abstract class Cuboid {
     /**
      * Checks if a player is inside the cuboid
      *
-     * @param player the player
      * @return true if the player is inside the cuboid
      */
     public boolean containsPlayer(Player player) {
@@ -30,9 +32,6 @@ public abstract class Cuboid {
     /**
      * Checks if a point is inside the cuboid
      *
-     * @param x the X coordinate
-     * @param y the Y coordinate
-     * @param z the Z coordinate
      * @return true if the point is inside the cuboid
      */
     public boolean contains(double x, double y, double z) {
@@ -42,13 +41,14 @@ public abstract class Cuboid {
     /**
      * Checks if a block is inside the cuboid
      *
-     * @param block the block
      * @return true if the block is inside the cuboid
      */
     public boolean containsBlock(Block block) {
         return contains(block.getLocation());
     }
 
-    public abstract World getWorld();
+    public final World getWorld() {
+        return world;
+    }
 
 }
