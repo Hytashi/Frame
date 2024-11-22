@@ -6,7 +6,7 @@
 
 <br/>
 
-# Prerequisites
+# Setup
 
 Simply download the [latest release](https://github.com/Hytashi/Frame/releases/download/2.1.0/Frame.jar) and add the jar to your *plugins* folder, then restart your server to load the plugin.<br/>
 Add the downloaded jar file to your project's build path and you're good to go! 
