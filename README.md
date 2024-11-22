@@ -101,11 +101,10 @@ These methods work with all cuboid types
 
 These methods work with all cuboid types
 
-| Method | Arguments | Description | Return type |
+| Method prototype | Description | Return type |
 |--|--|--|--|
-| containsPlayer | Player player | Returns whether the player is contained within the cuboid | boolean |
-| containsBlock | Block block | Returns whether the block is contained within the cuboid | boolean |
-| contains | Location location | Returns whether the location is contained within the cuboid | boolean |
-| contains | double x, double y, double z | Returns whether the coordinates are contained within the cuboid | boolean |
-| getWorld | :x: | Returns the World the cuboid is in | World |
-| toString | :x: | Returns a String representation of the cuboid | String |
+| containsPlayer(Player player) | Returns whether the player is contained within the cuboid | boolean |
+| containsBlock(Block block) | Returns whether the block is contained within the cuboid | boolean |
+| contains(Location location) | Returns whether the location is contained within the cuboid | boolean |
+| contains(double x, double y, double z) | Returns whether the coordinates are contained within the cuboid | boolean |
+| getWorld() | Returns the World the cuboid is in | World |
